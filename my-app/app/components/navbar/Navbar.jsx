@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./navbar.module.css";
 import Link from "next/link";
-import Image from 'next/image'
+import Image from "next/image";
 import ThemeToggle from "../themeToggle/ThemeToggle";
 import AuthLinks from "../authLinks/AuthLinks";
 
@@ -15,19 +15,20 @@ const Navbar = () => {
         <Image src="/youtube.png" alt="youtube" width={24} height={24} />
       </div>
       <div className={styles.logo}>fvitorinolog</div>
-      <ThemeToggle/>
       <div className={styles.links}>
-        <Link href="/" className={styles.links}>
+        <ThemeToggle />
+        <Link href="/" className={styles.link}>
           Pagina Inicial
         </Link>
-        <Link href="/" className={styles.links}>
+        <Link href="/" className={styles.link}>
           Contacto
         </Link>
-        <Link href="/" className={styles.links}>
+        <Link href="/" className={styles.link}>
           Acerca
         </Link>
+
+        <AuthLinks />
       </div>
-      <AuthLinks/>
     </div>
   );
 };
