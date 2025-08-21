@@ -10,12 +10,9 @@ const AuthLinks = () => {
 
   //   const { data:status } = useSession();
   const {status} = useSession();
-<<<<<<< HEAD
+
   console.log(`show status ---- ${status}`);  
-=======
-  console.log(`show status ---- ${status}`);
-  
->>>>>>> origin
+
   return (
     <>
       {status === "unauthenticated" ? (

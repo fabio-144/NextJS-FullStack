@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-// import { PrismaClient, Prisma } from "../app/generated/prisma";
->>>>>>> origin
 import { PrismaClient } from "../generated/prisma";
 
 let prisma 
