@@ -13,7 +13,7 @@ const LoginPage = () => {
     return <div className={styles.loading}>Loading...</div>;
   }
   if (status === "authenticated") {
-    console.log(data,status);
+    console.log(`Showing result --  ${data,status}`);
     router.push("/");
   }
 
@@ -23,8 +23,8 @@ const LoginPage = () => {
         <div className={styles.socialButton} onClick={() => signIn("google")}>
           Sign in with Google
         </div>
-        <div className={styles.socialButton} onClick={() => signIn("apple")}>
-          Sign in with Apple
+        <div className={styles.socialButton} onClick={() => signIn("github")}>
+          Sign in with GitHub
         </div>
         <div className={styles.socialButton} onClick={() => signIn("twitter")}>
           Sign in with X

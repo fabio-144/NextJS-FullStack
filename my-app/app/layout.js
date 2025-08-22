@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/footer";
@@ -6,7 +6,7 @@ import { ThemeContextProvider } from "./context/ThemeContext";
 import ThemeProvider from "./src/providers/ThemeProvider";
 import AuthProvider from "./src/providers/AuthProvider";
 
-const inter = Inter({ subset: ["latin"] });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Scofield Dev Blog",
