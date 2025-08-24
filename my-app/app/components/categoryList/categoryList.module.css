@@ -46,7 +46,9 @@
 .category.coding {
   background-color: #5e4fff31;
 }
-
+.category.study {
+  background-color: #5b6dfe31;
+}
 .image {
   border-radius: 50%;
 }
