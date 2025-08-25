@@ -1,15 +1,18 @@
-import Menu from "../components/Menu/Menu";
-import Comments from "../components/comments/Comments";
+import Menu from "../../components/Menu/Menu";
+import Comments from "../../components/comments/Comments";
 import styles from "./singlePage.module.css";
 import Image from "next/image";
 
 const getData = async (slug) => {
-  const res = await fetch(`http://localhost:3000/api/posts/${slug}`, {
-    // const res = await fetch(`${process.env.NEXTAUTH_URL}/api/post`, {
+  const base =
+    process.env.NEXTAUTH_URL || `http://localhost:${process.env.PORT || 3000}`;
+
+  const res = await fetch(`${base}/api/posts/${slug}`, {
     cache: "no-store",
   });
   if (!res.ok) {
-    throw new Error("Failed to fetch Posts");
+    const errorData = await res.json().catch(() => ({error:res.statusText}));
+    throw new Error(errorData.error || `  Failed to fetch data: ${res.status}`);
   }
   return res.json();
 };
@@ -28,7 +31,6 @@ const SinglePage = async ({ params }) => {
           <div className={styles.user}>
             {data?.user?.image && (
               <div className={styles.userImageContainer}>
-                {/* <Image src="/p1.jpeg" alt="" fill className={styles.avatar} /> */}
                 <Image
                   src={data.user.image}
                   alt=""
@@ -38,10 +40,10 @@ const SinglePage = async ({ params }) => {
                 />
               </div>
             )}
-
+  
             <div className={styles.userTextContainer}>
               <span className={styles.username}>{data.user.name}</span>
-              <span className={styles.date}>{data.createdAt}</span>
+              <span className={styles.date}>{new Date(data.createdAt).toDateString()}</span>
             </div>
           </div>
         </div>
@@ -57,8 +59,10 @@ const SinglePage = async ({ params }) => {
             className={styles.description}
             dangerouslySetInnerHTML={{ __html: data?.desc }}
           />
-
-          <Comments />
+  <div className={styles.comments}>
+    
+          <Comments postSlug={slug}/>
+  </div>
         </div>
         <Menu />
       </div>

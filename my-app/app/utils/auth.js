@@ -21,4 +21,4 @@ const authOptions = {
 export default authOptions;
 // export default NextAuth(authOptions);
 
-// export const getAuthSession = () => getServerSession(authOptions);
+export const getAuthSession = () => getServerSession(authOptions);

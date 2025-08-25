@@ -7,7 +7,7 @@ export const GET = async (req) => {
   const page = searchParams.get("page");
   const cat = searchParams.get("cat");
 
-  const POST_PER_PAGE = 2;
+  const POST_PER_PAGE = 3;
 
   const query = {
     take: POST_PER_PAGE,
@@ -15,9 +15,14 @@ export const GET = async (req) => {
     where: {
       ...(cat && { catSlug: cat }),
     },
-    orderBy: {
-      createdAt: "desc",
-    },
+    orderBy: [{
+      comments: {
+        _count: "asc",
+      },},
+      {createdAt: "desc",
+
+      },
+    ],
     include: {
       user: true,
       category: true,
@@ -30,10 +35,13 @@ export const GET = async (req) => {
       prisma.post.count({ where: query.where }),
     ]);
 
-    return new NextResponse(JSON.stringify(({posts, count}), ({ status: 200 })));
+    return new NextResponse(JSON.stringify({ posts, count }, { status: 200 }));
+
   } catch (error) {
     console.log(error);
-    return new NextResponse(JSON.stringify({ error: "Database error" }), {
+return new NextResponse(JSON.stringify({ error: "Database error " }), {
+      
+
       status: 500,
     });
   }
