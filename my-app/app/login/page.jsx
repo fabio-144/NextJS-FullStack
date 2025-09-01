@@ -26,8 +26,8 @@ const LoginPage = () => {
         <div className={styles.socialButton} onClick={() => signIn("github")}>
           Sign in with GitHub
         </div>
-        <div className={styles.socialButton} onClick={() => signIn("twitter")}>
-          Sign in with X
+        <div className={styles.socialButton} onClick={() => signIn("reddit")}>
+          Sign in with reddit
         </div>
       </div>
     </div>
